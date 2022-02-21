@@ -1,0 +1,20 @@
+name: SpotBugs
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+jobs:
+  spotbugs-analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run SpotBugs
+        uses: titenkov/spotbugs-github-action@main
+        with:
+          input: './resources/HelloWorld.jar'
+          output: 'results.sarif'
+      - name: Show results.sarif
+        run: jq . results.sarif
