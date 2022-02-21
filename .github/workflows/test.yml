@@ -1,4 +1,4 @@
-name: SpotBugs
+name: SpotBugs Test
 
 on:
   pull_request:
